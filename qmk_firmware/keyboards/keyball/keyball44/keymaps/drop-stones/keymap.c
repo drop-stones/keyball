@@ -77,10 +77,16 @@ void oledkit_render_info_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        // CTRL + Enter => IME Toggle
         case LT(2, KC_ENTER):
-            if (get_mods() == MOD_BIT(KC_LCTL)) {
-                if (record->tap.count && record->event.pressed) {
+            if (record->tap.count && record->event.pressed) {
+                // CTRL + Enter => CTRL + Space
+                if (get_mods() == MOD_BIT(KC_LCTL)) {
+                    tap_code16(KC_SPACE);
+                    return false;
+                }
+
+                // ALT + Enter => ALT + Space
+                if (get_mods() == MOD_BIT(KC_RALT)) {
                     tap_code16(KC_SPACE);
                     return false;
                 }
