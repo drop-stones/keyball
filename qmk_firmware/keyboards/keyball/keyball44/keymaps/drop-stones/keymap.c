@@ -75,6 +75,8 @@ void oledkit_render_info_user(void) {
 // drop-stones' customizations
 // ------------------------------------------------------------------------
 
+// Programming the behavior of any keycodes
+// https://docs.qmk.fm/#/custom_quantum_functions?id=programming-the-behavior-of-any-keycode
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(2, KC_ENTER):
@@ -99,6 +101,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #    include "action_tapping.h"
 #    include <stdint.h>
 
+// Time to determines what is a tap and what is a hold
+// https://docs.qmk.fm/#/tap_hold?id=tapping-term
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LSFT_T(KC_Z): // Shift keys are typed quickly
@@ -117,9 +121,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 #    include "action_tapping.h"
 #    include <stdint.h>
 
+// Holding and releasing keys without pressing another key will result tapping
+// https://docs.qmk.fm/#/tap_hold?id=retro-tapping
 bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LCTL_T(KC_A):
+        case LCTL_T(KC_A): // CTRL/ALT/SHIFT keys perform a tap action unless another key is pressed
         case LSFT_T(KC_Z):
         case LALT_T(KC_C):
         case RCTL_T(KC_SCLN):
@@ -136,9 +142,12 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
 #    include "action_tapping.h"
 #    include <stdint.h>
 
+// Dual-role keys perform hold action if a dual-role key and another key are pressed within tapping term
+// and another key is released first
+// https://docs.qmk.fm/#/tap_hold?id=tapping-term
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(1, KC_TAB):
+        case LT(1, KC_TAB): // Layer keys perform a hold action preferentially
         case LT(2, KC_ENTER):
         case LT(3, KC_DEL):
         case LT(1, KC_SPACE):
@@ -154,9 +163,12 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
 #    include "action_tapping.h"
 #    include <stdint.h>
 
+// Dual-role keys perform hold action if a dual-role key and another key are pressed within tapping term
+// and a dual-role key is released first
+// https://docs.qmk.fm/#/tap_hold?id=tapping-term
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LT(1, KC_TAB):
+        case LT(1, KC_TAB): // Layer keys perform a hold action preferentially
         case LT(2, KC_ENTER):
         case LT(3, KC_DEL):
         case LT(1, KC_SPACE):
