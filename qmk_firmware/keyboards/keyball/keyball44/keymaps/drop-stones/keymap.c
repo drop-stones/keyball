@@ -19,6 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 
 #include "quantum.h"
+#include "keyball44.h"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -69,3 +70,21 @@ void oledkit_render_info_user(void) {
     keyball_oled_render_layerinfo();
 }
 #endif
+
+// ------------------------------------------------------------------------
+// drop-stones' customizations
+// ------------------------------------------------------------------------
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        // CTRL + Enter => IME Toggle
+        case LT(2, KC_ENTER):
+            if (get_mods() == MOD_BIT(KC_LCTL)) {
+                if (record->tap.count && record->event.pressed) {
+                    tap_code16(KC_SPACE);
+                    return false;
+                }
+            }
+    }
+    return true;
+};
