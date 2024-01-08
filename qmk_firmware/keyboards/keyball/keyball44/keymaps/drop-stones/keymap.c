@@ -125,3 +125,21 @@ bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     }
 }
 #endif
+
+#ifdef PERMISSIVE_HOLD_PER_KEY
+#    include "action_tapping.h"
+#    include <stdint.h>
+
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(1, KC_TAB):
+        case LT(2, KC_ENTER):
+        case LT(3, KC_DEL):
+        case LT(1, KC_SPACE):
+        case LT(2, KC_BSPC):
+            return true;
+        default:
+            return false;
+    }
+}
+#endif
