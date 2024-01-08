@@ -106,3 +106,22 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 }
 #endif
+
+#ifdef RETRO_TAPPING_PER_KEY
+#    include "action_tapping.h"
+#    include <stdint.h>
+
+bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LCTL_T(KC_A):
+        case LSFT_T(KC_Z):
+        case LALT_T(KC_C):
+        case RCTL_T(KC_SCLN):
+        case RSFT_T(KC_SLSH):
+        case RALT_T(KC_COMM):
+            return true;
+        default:
+            return false;
+    }
+}
+#endif
