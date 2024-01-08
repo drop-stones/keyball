@@ -88,3 +88,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 };
+
+#ifdef TAPPING_TERM_PER_KEY
+#    include "action_tapping.h"
+#    include <stdint.h>
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LSFT_T(KC_Z): // Shift keys are typed quickly
+        case RSFT_T(KC_SLSH):
+            return 100;
+        case LWIN_T(KC_X): // Win keys are not typed quickly
+        case RWIN_T(KC_DOT):
+            return 250;
+        default:
+            return TAPPING_TERM;
+    }
+}
+#endif
