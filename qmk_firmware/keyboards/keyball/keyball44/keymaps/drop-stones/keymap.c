@@ -32,6 +32,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                KC_LWIN      , KC_LALT      , LT(1, KC_TAB) , LT(2, KC_ENT) , LT(3, KC_DEL) ,                   LT(2, KC_BSPC) , LT(1, KC_SPACE) , _______         , _______        , KC_ESC
   ),
 
+  // Symbol Layser
   [1] = LAYOUT_universal(
     _______  ,  S(KC_1) , S(KC_2)    , S(KC_3)    , S(KC_4)    , S(KC_5)   ,                    S(KC_6)    , S(KC_7)    , S(KC_8)    , S(KC_9)   , S(KC_0)    , _______ ,
     _______  ,  _______ , S(KC_BSLS) , S(KC_LBRC) , S(KC_RBRC) , S(KC_EQL) ,                    KC_MINS    , S(KC_QUOT) , KC_QUOT    , S(KC_GRV) , S(KC_SCLN) , _______ ,
@@ -39,6 +40,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 _______ , _______    , _______    , _______    , _______   ,                    _______    , _______    , _______    , _______   , _______
   ),
 
+  // Number/Arrow Layer
   [2] = LAYOUT_universal(
     _______  ,  KC_1   , KC_2    , KC_3    , KC_4    , KC_5    ,                    KC_6    , KC_7    , KC_8    , KC_9    , KC_0    , _______ ,
     _______  , _______ , _______ , _______ , _______ , _______ ,                    KC_LEFT , KC_DOWN , KC_UP   , KC_RGHT , KC_QUOT , _______ ,
@@ -46,10 +48,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                _______ , _______ , _______ , _______ , _______ ,                    _______ , _______ , _______ , _______ , _______
   ),
 
+  // Function Key Layer
   [3] = LAYOUT_universal(
     _______  , KC_F1   , KC_F2   , KC_F3   , KC_F4   , KC_F5   ,                    KC_F6    , KC_F7    , KC_F8   , KC_F9   , KC_F10  , _______ ,
     _______  , KC_F11  , KC_F12  , KC_F13  , KC_F14  , KC_F15  ,                    KC_F16   , KC_F17   , KC_F18  , KC_F19  , KC_F20  , _______ ,
     _______  , _______ , _______ , _______ , _______ , _______ ,                    CPI_D100 , CPI_I100 , KC_VOLD , KC_VOLU , KC_MUTE , _______ ,
+               _______ , _______ , _______ , _______ , _______ ,                    _______  , _______  , _______ , _______ , _______
+  ),
+
+  // Mouse Layer
+  [4] = LAYOUT_universal(
+    _______  , _______ , _______ , _______ , _______ , _______ ,                    _______  , _______  , _______ , _______ , _______ , _______ ,
+    _______  , _______ , _______ , _______ , _______ , _______ ,                    _______  , KC_BTN1  , KC_BTN2 , _______ , _______ , _______ ,
+    _______  , _______ , _______ , _______ , _______ , _______ ,                    _______  , _______  , _______ , _______ , _______ , _______ ,
                _______ , _______ , _______ , _______ , _______ ,                    _______  , _______  , _______ , _______ , _______
   ),
 };
@@ -181,3 +192,8 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     }
 }
 #endif
+
+// https://docs.qmk.fm/#/feature_pointing_device?id=pointing-device-auto-mouse
+void pointing_device_init_user(void) {
+    set_auto_mouse_enable(true); // always required before the auto mouse feature will work
+}
