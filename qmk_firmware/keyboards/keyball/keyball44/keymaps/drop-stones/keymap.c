@@ -106,8 +106,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // https://docs.qmk.fm/#/tap_hold?id=tapping-term
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LSFT_T(KC_Z): // Shift keys are typed quickly
-        case RSFT_T(KC_SLSH):
+        case LSFT_T(KC_Z): // "z" are shift key but typed normally
+            return TAPPING_TERM;
+        case RSFT_T(KC_SLSH): // Shift keys are typed quickly
             return 100;
         case LWIN_T(KC_X): // Win keys are not typed quickly
         case RWIN_T(KC_DOT):
