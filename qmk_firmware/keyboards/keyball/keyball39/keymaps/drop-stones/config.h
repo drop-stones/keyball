@@ -38,3 +38,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAPPING_TERM 175
 #define TAPPING_TERM_PER_KEY
+
+#define RETRO_TAPPING_PER_KEY
