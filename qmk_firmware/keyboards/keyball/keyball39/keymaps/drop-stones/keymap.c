@@ -179,3 +179,10 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     }
 }
 #endif
+
+#ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
+// https://docs.qmk.fm/#/feature_pointing_device?id=pointing-device-auto-mouse
+void pointing_device_init_user(void) {
+    set_auto_mouse_enable(true); // always required before the auto mouse feature will work
+}
+#endif
