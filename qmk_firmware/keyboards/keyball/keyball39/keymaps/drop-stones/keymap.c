@@ -69,3 +69,28 @@ void oledkit_render_info_user(void) {
     keyball_oled_render_layerinfo();
 }
 #endif
+
+// ------------------------------------------------------------------------
+// drop-stones' customizations
+// ------------------------------------------------------------------------
+
+#ifdef TAPPING_TERM_PER_KEY
+#    include "action_tapping.h"
+#    include <stdint.h>
+
+// Time to determines what is a tap and what is a hold
+// https://docs.qmk.fm/#/tap_hold?id=tapping-term
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LSFT_T(KC_Z): // "z" are shift key but typed normally
+            return TAPPING_TERM;
+        case RSFT_T(KC_SLSH): // Shift keys are typed quickly
+            return 100;
+        case LWIN_T(KC_X): // Win keys are not typed quickly
+        case RWIN_T(KC_DOT):
+            return 250;
+        default:
+            return TAPPING_TERM;
+    }
+}
+#endif
