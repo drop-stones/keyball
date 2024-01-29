@@ -27,7 +27,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q          , KC_W          , KC_E          , KC_R          , KC_T          ,                                   KC_Y            , KC_U      , KC_I              , KC_O            , KC_P     ,
     LCTL_T(KC_A)  , KC_S          , KC_D          , KC_F          , KC_G          ,                                   KC_H            , KC_J      , KC_K              , KC_L            , RCTL_T(KC_SCLN)  ,
     KC_Z          , LWIN_T(KC_X)  , LALT_T(KC_C)  , KC_V          , KC_B          ,                                   KC_N            , KC_M      , RALT_T(KC_COMM)   , RWIN_T(KC_DOT)  , KC_SLSH  ,
-    KC_LSFT       , KC_ESC        , _______       , LT(1, KC_TAB) , LT(2, KC_ENT) , LT(3, KC_DEL) , LT(2, KC_BSPC)  , LT(1, KC_SPACE) , _______   , _______           , _______         , KC_RSFT
+    KC_LSFT       , KC_ESC        , MO(4)         , LT(1, KC_TAB) , LT(2, KC_ENT) , LT(3, KC_DEL) , LT(2, KC_BSPC)  , LT(1, KC_SPACE) , _______   , _______           , _______         , KC_RSFT
   ),
 
   // Symbol Layser
@@ -54,8 +54,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______ , _______ , _______ , _______ , _______ , _______  , _______ , _______  , _______  , _______ , _______ , _______
   ),
 
-  // Mouse Layer
+  // Scroll/Mouse Layer
   [4] = LAYOUT_universal(
+    _______ , _______ , _______ , _______ , _______ ,                       _______  , _______  , _______ , _______ , _______ ,
+    _______ , _______ , _______ , _______ , _______ ,                       KC_WBAK  , KC_BTN1  , KC_BTN2 , KC_WFWD , _______ ,
+    _______ , _______ , _______ , _______ , _______ ,                       _______  , _______  , _______ , _______ , _______ ,
+    _______ , _______ , _______ , _______ , _______ , _______  , _______ ,  _______  , _______  , _______ , _______ , _______
+  ),
+  
+  // Auto Mouse Layer
+  [5] = LAYOUT_universal(
     _______ , _______ , _______ , _______ , _______ ,                       _______  , _______  , _______ , _______ , _______ ,
     _______ , _______ , _______ , _______ , _______ ,                       KC_WBAK  , KC_BTN1  , KC_BTN2 , KC_WFWD , _______ ,
     _______ , _______ , _______ , _______ , _______ ,                       _______  , _______  , _______ , _______ , _______ ,
@@ -65,8 +73,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    // Auto enable scroll mode when the highest layer is 3
-    keyball_set_scroll_mode(get_highest_layer(state) == 3);
+    if (get_highest_layer(state) == 4) {
+        // Auto enable scroll mode when the highest layer is 4
+        keyball_set_scroll_mode(true);
+        if (get_auto_mouse_enable() == true) {
+          // Disable auto mouse layer to enable scroll
+          set_auto_mouse_enable(false);
+        }
+    } else {
+        // Reset default settings
+        keyball_set_scroll_mode(false);
+        if (get_auto_mouse_enable() == false) {
+          set_auto_mouse_enable(true);
+        }
+    }
     return state;
 }
 

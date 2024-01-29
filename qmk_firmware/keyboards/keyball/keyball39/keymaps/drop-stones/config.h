@@ -44,6 +44,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define PERMISSIVE_HOLD_PER_KEY
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5 // override layer settings
+#define DYNAMIC_KEYMAP_LAYER_COUNT 6 // override layer settings
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
-#define AUTO_MOUSE_DEFAULT_LAYER 4
+#define AUTO_MOUSE_DEFAULT_LAYER 5
