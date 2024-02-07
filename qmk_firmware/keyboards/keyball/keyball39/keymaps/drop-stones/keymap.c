@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______ , _______ , _______ , _______ , _______ ,                       _______  , _______  , _______ , _______ , _______ ,
     _______ , _______ , _______ , _______ , _______ , _______  , _______ ,  _______  , _______  , _______ , _______ , _______
   ),
-  
+
   // Auto Mouse Layer
   [5] = LAYOUT_universal(
     _______ , _______ , _______ , _______ , _______ ,                       _______  , _______  , _______ , _______ , _______ ,
@@ -77,14 +77,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
         // Auto enable scroll mode when the highest layer is 4
         keyball_set_scroll_mode(true);
         if (get_auto_mouse_enable() == true) {
-          // Disable auto mouse layer to enable scroll
-          set_auto_mouse_enable(false);
+            // Disable auto mouse layer to enable scroll
+            set_auto_mouse_enable(false);
         }
     } else {
         // Reset default settings
         keyball_set_scroll_mode(false);
         if (get_auto_mouse_enable() == false) {
-          set_auto_mouse_enable(true);
+            set_auto_mouse_enable(true);
         }
     }
     return state;
@@ -111,14 +111,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(2, KC_ENTER):
             if (record->tap.count && record->event.pressed) {
-                // CTRL + Enter => CTRL + Space
-                if (get_mods() == MOD_BIT(KC_LCTL)) {
-                    tap_code16(KC_SPACE);
-                    return false;
-                }
-
-                // ALT + Enter => ALT + Space
-                if (get_mods() == MOD_BIT(KC_RALT)) {
+                // CTRL/SHIFT/ALT/GUI + Enter => CTRL/SHIFT/ALT/GUI + Space
+                if (get_mods() & MOD_MASK_CSAG) {
                     tap_code16(KC_SPACE);
                     return false;
                 }
