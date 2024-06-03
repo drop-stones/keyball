@@ -146,11 +146,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 // https://docs.qmk.fm/#/tap_hold?id=retro-tapping
 bool get_retro_tapping(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case LCTL_T(KC_A): // CTRL/ALT/SHIFT keys perform a tap action unless another key is pressed
-        case LALT_T(KC_C):
-        case RCTL_T(KC_SCLN):
-        case RALT_T(KC_COMM):
-            return true;
         default:
             return false;
     }
