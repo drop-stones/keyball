@@ -131,7 +131,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LWIN_T(KC_X): // Win keys are not typed quickly
         case RWIN_T(KC_DOT):
-            return 250;
+            return 200;
         default:
             return TAPPING_TERM;
     }
@@ -213,7 +213,6 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t *record) {
       return QUICK_TAP_TERM;
   }
 }
-
 #endif
 
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
