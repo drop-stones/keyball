@@ -20,6 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+// Split parameters
+#define SPLIT_HAND_MATRIX_GRID_LOW_IS_LEFT // side with lower matrix grid numbers is always recognized as the left hand
+
 // Comment out to reduce binary size
 #ifdef RGBLIGHT_ENABLE
 #define RGBLIGHT_EFFECT_BREATHING
