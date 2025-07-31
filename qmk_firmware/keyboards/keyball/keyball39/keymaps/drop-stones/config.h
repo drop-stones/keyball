@@ -23,36 +23,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // Split parameters
 #define SPLIT_HAND_MATRIX_GRID_LOW_IS_LEFT // side with lower matrix grid numbers is always recognized as the left hand
 
-// Comment out to reduce binary size
-#ifdef RGBLIGHT_ENABLE
-#define RGBLIGHT_EFFECT_BREATHING
-#define RGBLIGHT_EFFECT_RAINBOW_MOOD
-#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-#define RGBLIGHT_EFFECT_SNAKE
-#define RGBLIGHT_EFFECT_KNIGHT
-#define RGBLIGHT_EFFECT_CHRISTMAS
-#define RGBLIGHT_EFFECT_STATIC_GRADIENT
-#define RGBLIGHT_EFFECT_RGB_TEST
-#define RGBLIGHT_EFFECT_ALTERNATING
-#define RGBLIGHT_EFFECT_TWINKLE
-#endif
-
 #define TAP_CODE_DELAY 5
 
-#define TAPPING_TERM 150
 #define TAPPING_TERM_PER_KEY
+#define TAPPING_TERM 150
 
 #define RETRO_TAPPING_PER_KEY
 
 #define PERMISSIVE_HOLD_PER_KEY
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
-#define QUICK_TAP_TERM 120
 #define QUICK_TAP_TERM_PER_KEY
+#define QUICK_TAP_TERM 120
 
-// Automatic Mouse Layer
+// Defines the number of layers that are available for dynamic keymaps (VIA, VIAL, etc).
 #define DYNAMIC_KEYMAP_LAYER_COUNT 6 // override layer settings
-#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
 #define AUTO_MOUSE_DEFAULT_LAYER 5
 #define AUTO_MOUSE_TIME 350

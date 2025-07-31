@@ -9,8 +9,8 @@
 // https://docs.qmk.fm/#/tap_hold?id=tapping-term
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case LWIN_T(KC_X): // Win keys are not typed quickly
-    case RWIN_T(KC_DOT):
+    case LGUI_T(KC_X): // Win keys are not typed quickly
+    case RGUI_T(KC_DOT):
       return 200;
     default:
       return TAPPING_TERM;

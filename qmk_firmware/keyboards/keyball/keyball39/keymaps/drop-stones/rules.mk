@@ -10,8 +10,9 @@ SRC += \
 	features/retro_tapping.c \
 	features/tapping_term.c \
 
+# Enable features
+VIA_ENABLE = yes
+
 # Disalbe lighting
 RGBLIGHT_ENABLE = no
 OLED_ENABLE = no
-
-VIA_ENABLE = yes
