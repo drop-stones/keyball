@@ -27,6 +27,10 @@ enum layer_names: uint8_t {
   _AUTO_MOUSE
 };
 
+//====================
+// Keymaps
+//====================
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // keymap for default (VIA)
@@ -78,3 +82,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 // clang-format on
+
+//====================
+// Key Overrides
+//====================
+
+// LCTRL + Enter => LCTRL + Space
+const key_override_t lctl_enter_to_space = ko_make_basic(MOD_BIT(KC_LCTL), LT(2, KC_ENT), LCTL(KC_SPACE));
+
+// RALT + Enter => RALT + Space
+const key_override_t ralt_enter_to_space = ko_make_basic(MOD_BIT(KC_RALT), LT(2, KC_ENT), RALT(KC_SPACE));
+
+const key_override_t *key_overrides[] = {
+    &lctl_enter_to_space,
+    &ralt_enter_to_space
+};

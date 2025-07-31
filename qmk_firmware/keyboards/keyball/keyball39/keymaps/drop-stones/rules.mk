@@ -12,6 +12,7 @@ SRC += \
 
 # Enable features
 VIA_ENABLE = yes
+KEY_OVERRIDE_ENABLE = yes
 
 # Disalbe lighting
 RGBLIGHT_ENABLE = no
