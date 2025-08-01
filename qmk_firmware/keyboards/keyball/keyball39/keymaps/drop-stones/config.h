@@ -69,6 +69,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define QUICK_TAP_TERM 120
 #define QUICK_TAP_TERM_PER_KEY
 
+//====================
+// Caps Word
+//====================
+
+// Activate Caps Word by pressing Left Shift + Right Shift
+#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
 //====================
 // VIA/VIAL
