@@ -5,7 +5,7 @@ on:
   workflow_call:
     inputs:
       qmk_version:
-        default: '0.22.14'
+        default: '0.29.11'
         type: string
         required: false
       keyboard:
