@@ -18,14 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 
-enum layer_names: uint8_t {
-  _BASE = 0,
-  _SYMBOLS,
-  _NUMBERS,
-  _FUNCTIONS,
-  _SCROLL_MOUSE,
-  _AUTO_MOUSE
-};
+#include "keymap.h"
 
 //====================
 // Keymaps
@@ -38,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q          , KC_W          , KC_E          , KC_R          , KC_T          ,                                   KC_Y            , KC_U      , KC_I              , KC_O            , KC_P     ,
     LCTL_T(KC_A)  , KC_S          , KC_D          , KC_F          , KC_G          ,                                   KC_H            , KC_J      , KC_K              , KC_L            , RCTL_T(KC_SCLN)  ,
     KC_Z          , LGUI_T(KC_X)  , LALT_T(KC_C)  , KC_V          , KC_B          ,                                   KC_N            , KC_M      , RALT_T(KC_COMM)   , RGUI_T(KC_DOT)  , KC_SLSH  ,
-    KC_LSFT       , KC_ESC        , MO(4)         , LT(1, KC_TAB) , LT(2, KC_ENT) , LT(3, KC_DEL) , LT(2, KC_BSPC)  , LT(1, KC_SPACE) ,                                                   KC_RSFT
+    KC_LSFT       , KC_ESC        , MO(_MOUSE)    , LT(1, KC_TAB) , LT(2, KC_ENT) , LT(3, KC_DEL) , LT(2, KC_BSPC)  , LT(1, KC_SPACE) ,                                                   KC_RSFT
   ),
 
   // Symbol Layser
@@ -65,16 +58,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______ , _______ , _______ , _______ , _______ , _______  , _______ , _______  ,                                _______
   ),
 
-  // Scroll/Mouse Layer
-  [_SCROLL_MOUSE] = LAYOUT_right_ball(
-    _______ , _______ , _______ , _______ , _______ ,                       _______  , _______  , _______ , _______ , _______ ,
-    _______ , _______ , _______ , _______ , _______ ,                       KC_WBAK  , KC_BTN1  , KC_BTN2 , KC_WFWD , _______ ,
-    _______ , _______ , _______ , _______ , _______ ,                       _______  , _______  , _______ , _______ , _______ ,
-    _______ , _______ , _______ , _______ , _______ , _______  , _______ ,  _______  ,                                _______
-  ),
-
-  // Auto Mouse Layer
-  [_AUTO_MOUSE] = LAYOUT_right_ball(
+  // Mouse Layer
+  [_MOUSE] = LAYOUT_right_ball(
     _______ , _______ , _______ , _______ , _______ ,                       _______  , _______  , _______ , _______ , _______ ,
     _______ , _______ , _______ , _______ , _______ ,                       KC_WBAK  , KC_BTN1  , KC_BTN2 , KC_WFWD , _______ ,
     _______ , _______ , _______ , _______ , _______ ,                       _______  , _______  , _______ , _______ , _______ ,

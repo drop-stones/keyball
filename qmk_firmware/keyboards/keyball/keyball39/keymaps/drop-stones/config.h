@@ -37,8 +37,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define QUICK_TAP_TERM 120
 
 // Defines the number of layers that are available for dynamic keymaps (VIA, VIAL, etc).
-#define DYNAMIC_KEYMAP_LAYER_COUNT 6 // override layer settings
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5 // override layer settings
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE
-#define AUTO_MOUSE_DEFAULT_LAYER 5
-#define AUTO_MOUSE_TIME 350

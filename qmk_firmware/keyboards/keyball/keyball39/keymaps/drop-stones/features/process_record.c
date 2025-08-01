@@ -1,17 +1,17 @@
-#include "quantum.h"
+#include QMK_KEYBOARD_H
 
-// Programming the behavior of any keycodes
-// https://docs.qmk.fm/#/custom_quantum_functions?id=programming-the-behavior-of-any-keycode
+#include "keymap.h"
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case LT(2, KC_ENTER):
-      if (record->tap.count && record->event.pressed) {
-        // LCTRL/RALT + Enter => LCTRL/RALT + Space
-        if (get_mods() & (MOD_BIT(KC_LCTL) | MOD_BIT(KC_RALT))) {
-          tap_code16(KC_SPACE);
-          return false;
-        }
+    case MO(_MOUSE):
+      if (record->event.pressed) {
+        keyball_set_scroll_mode(true);
+      } else {
+        keyball_set_scroll_mode(false);
       }
+      return true;
+    default:
+      return true; // Process other keycodes normally
   }
-  return true;
-};
+}
