@@ -20,23 +20,59 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-// Split parameters
-#define SPLIT_HAND_MATRIX_GRID_LOW_IS_LEFT // side with lower matrix grid numbers is always recognized as the left hand
+//====================
+// Split Keyboard
+//====================
 
+// Side with lower matrix grid numbers is always recognized as the left hand
+#define SPLIT_HAND_MATRIX_GRID_LOW_IS_LEFT
+
+//====================
+// Pointing Device
+//====================
+
+// Enable Automatic Mouse Layer
+#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+
+//====================
+// Tapping Term
+//====================
+
+// Wait n (ms) before key-up event (unregister_code) after key-down event (register code)
+// This value is default in keyball39
 #define TAP_CODE_DELAY 5
 
-#define TAPPING_TERM_PER_KEY
-#define TAPPING_TERM 150
+//====================
+// Tapping Term
+//====================
 
-#define RETRO_TAPPING_PER_KEY
+// Global settings in ms
+#define TAPPING_TERM 150
+#define TAPPING_TERM_PER_KEY
+
+//====================
+// Permissive Hold
+//====================
 
 #define PERMISSIVE_HOLD_PER_KEY
+
+//====================
+// Hold On Other Key Press
+//====================
+
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
-#define QUICK_TAP_TERM_PER_KEY
+//====================
+// Quick Tap Term
+//====================
+
 #define QUICK_TAP_TERM 120
+#define QUICK_TAP_TERM_PER_KEY
 
-// Defines the number of layers that are available for dynamic keymaps (VIA, VIAL, etc).
-#define DYNAMIC_KEYMAP_LAYER_COUNT 5 // override layer settings
 
-#define POINTING_DEVICE_AUTO_MOUSE_ENABLE
+//====================
+// VIA/VIAL
+//====================
+
+// Defines the number of layers that are available
+#define DYNAMIC_KEYMAP_LAYER_COUNT 5

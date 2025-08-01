@@ -7,7 +7,6 @@ SRC += \
 	features/pointing_device.c \
 	features/process_record.c \
 	features/quick_tap.c \
-	features/retro_tapping.c \
 	features/tapping_term.c \
 
 # Enable features
