@@ -7,3 +7,7 @@ enum layer_names {
   _FUNCTIONS,
   _MOUSE,
 };
+
+enum combo_names {
+  A_ENT_TO_LCTL_SPC = 0,
+};

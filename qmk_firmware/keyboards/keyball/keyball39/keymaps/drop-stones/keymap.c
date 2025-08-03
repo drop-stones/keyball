@@ -69,16 +69,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // clang-format on
 
 //====================
-// Key Overrides
+// Combos
 //====================
 
-// LCTRL + Enter => LCTRL + Space
-const key_override_t lctl_enter_to_space = ko_make_basic(MOD_BIT(KC_LCTL), LT(2, KC_ENT), LCTL(KC_SPACE));
+// Added this combo to prevent accidental "a+enter" input when intending "ctrl+enter" → maps "a+enter" to "ctrl+space"
+const uint16_t PROGMEM a_ent_to_lctl_spc[] = {LCTL_T(KC_A), LT(2, KC_ENT), COMBO_END};
 
-// RALT + Enter => RALT + Space
-const key_override_t ralt_enter_to_space = ko_make_basic(MOD_BIT(KC_RALT), LT(2, KC_ENT), RALT(KC_SPACE));
-
-const key_override_t *key_overrides[] = {
-    &lctl_enter_to_space,
-    &ralt_enter_to_space
+combo_t key_combos[] = {
+  [A_ENT_TO_LCTL_SPC] = COMBO(a_ent_to_lctl_spc, LCTL(KC_SPACE)),
 };

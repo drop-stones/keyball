@@ -1,5 +1,6 @@
 # build rules
 SRC += \
+	features/combo.c \
 	features/hold_on_other_key_press.c \
 	features/layer_state.c \
 	features/oled.c \
@@ -11,8 +12,8 @@ SRC += \
 
 # Enable features
 VIA_ENABLE = yes
-KEY_OVERRIDE_ENABLE = yes
 CAPS_WORD_ENABLE = yes
+COMBO_ENABLE = yes
 
 # Disalbe lighting
 RGBLIGHT_ENABLE = no
