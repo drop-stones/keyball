@@ -77,6 +77,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 
 //====================
+// Combos
+//====================
+
+// Per-combo timeout window
+#define COMBO_TERM_PER_COMBO
+// Controls if a given combo should fire only if tapped
+#define COMBO_MUST_TAP_PER_COMBO
+// Controls if a given combo should fire only if its keys are pressed in order
+#define COMBO_MUST_PRESS_IN_ORDER_PER_COMBO
+
+//====================
 // VIA/VIAL
 //====================
 

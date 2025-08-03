@@ -67,3 +67,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 // clang-format on
+
+//====================
+// Combos
+//====================
+
+// Added this combo to prevent accidental "a+enter" input when intending "ctrl+enter" → maps "a+enter" to "ctrl+space"
+const uint16_t PROGMEM a_ent_to_lctl_spc[] = {LCTL_T(KC_A), LT(2, KC_ENT), COMBO_END};
+
+combo_t key_combos[] = {
+  [A_ENT_TO_LCTL_SPC] = COMBO(a_ent_to_lctl_spc, LCTL(KC_SPACE)),
+};
